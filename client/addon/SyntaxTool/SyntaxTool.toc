@@ -1,0 +1,5 @@
+## Interface: 50400
+## Title: SyntaxTool
+## Notes: A tool to manually fix duplication issues in the world.
+## Author: MoltenCrystal
+## Version: v1.0
