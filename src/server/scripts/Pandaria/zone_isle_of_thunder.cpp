@@ -2010,7 +2010,8 @@ struct npc_shanze_thundercaller : public customCreatureAI
 
             // Cast Call of Thunder on Lightning Ritual Bunny
             Creature* lightningbunny = me->FindNearestCreature(NPC_LIGHTNING_RITUAL_BUNNY, 40.0f);
-            DoCast(lightningbunny, SPELL_CALL_OF_THUNDER);
+            if (lightningbunny)
+                DoCast(lightningbunny, SPELL_CALL_OF_THUNDER);
         }
     }
 
