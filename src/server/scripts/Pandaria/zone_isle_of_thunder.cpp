@@ -1993,8 +1993,8 @@ struct npc_shanze_thundercaller : public customCreatureAI
                 spear = me->SummonCreature(NPC_KULANS_SPEAR, 6604.359f, 6291.149f, 5.067f, 3.553f);
 
             // Cast Call of Thunder on Lightning Ritual Bunny
-            if (Creature* lightningbunny = me->FindNearestCreature(NPC_LIGHTNING_RITUAL_BUNNY, 40.0f))
-                DoCast(lightningbunny, SPELL_CALL_OF_THUNDER);
+            Creature* lightningbunny = me->FindNearestCreature(NPC_LIGHTNING_RITUAL_BUNNY, 40.0f);
+            DoCast(lightningbunny, SPELL_CALL_OF_THUNDER);
         }
     }
 
@@ -2008,8 +2008,9 @@ struct npc_shanze_thundercaller : public customCreatureAI
                 spear = me->SummonCreature(NPC_KULANS_SPEAR, 6604.359f, 6291.149f, 5.067f, 3.553f);
 
             // Cast Call of Thunder on Lightning Ritual Bunny
-            if (Creature* lightningbunny = me->FindNearestCreature(NPC_LIGHTNING_RITUAL_BUNNY, 40.0f))
-                DoCast(lightningbunny, SPELL_CALL_OF_THUNDER);
+            Creature* lightningbunny = me->FindNearestCreature(NPC_LIGHTNING_RITUAL_BUNNY, 40.0f);
+            DoCast(lightningbunny, SPELL_CALL_OF_THUNDER);
+                
         }
     }
 
