@@ -174,7 +174,7 @@ void CliRunnable::run()
             if (!*command_str)
             {
 #if PLATFORM == PLATFORM_WINDOWS
-                printf("MOPCORE>");
+                printf("TrinityCore>");
 #else
                 free(command_str);
 #endif
@@ -185,7 +185,7 @@ void CliRunnable::run()
             if (!consoleToUtf8(command_str, command))         // convert from console encoding to utf8
             {
 #if PLATFORM == PLATFORM_WINDOWS
-                printf("MOPCORE>");
+                printf("TrinityCore>");
 #else
                 free(command_str);
 #endif
