@@ -2,7 +2,7 @@
 -- Thunder Calls
 -- The Storm Gathers
 UPDATE `quest_template`
-SET `NextQuestId` = 32706
+SET `NextQuestId` = 32644
 WHERE `Id` = 32681;
 
 -- Allies in the Shadows
@@ -11,7 +11,7 @@ WHERE `Id` = 32681;
 -- Champions of the Thunder King
 -- The Assault on Shaol'mara
 UPDATE `quest_template`
-SET `PrevQuestId` = 32640, `NextQuestId` = 32654
+SET `PrevQuestId` = 32681, `NextQuestId` = 32654
 WHERE `Id` = 32644;
 
 -- Tear Down This Wall!
