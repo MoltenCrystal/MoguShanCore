@@ -1,4 +1,4 @@
-/* Storyline: Isle of Thunder */
+/* Storyline: Isle of Thunder (Alliance) */
 -- Thunder Calls
 -- The Storm Gathers
 UPDATE `quest_template`
