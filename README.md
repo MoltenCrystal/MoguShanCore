@@ -1,7 +1,6 @@
 ![img](https://github.com/MoltenCrystal/MoguShanCore/blob/main/doc/img/MoPlogo.webp)
 
 ## A SkyFire and TrinityCore based project
-[Features](https://github.com/MoltenCrystal/MoguShanCore/blob/main/FEATURES.md)
 
 ## Requirements
 + Platform: Linux, Windows or Mac
