@@ -12,7 +12,7 @@ WHERE `id` IN (30470,32640,32641);
 
 -- Remove unneeded credit
 -- Honoring a Hero (Alliance)
-DELETE FROM `quest_objective`WHERE `questId` = 8149 AND`id` = 284684;
+DELETE FROM `quest_objective`WHERE `questId` = 8149 AND `id` = 284684;
 
 -- Honoring a Hero (Horde)
 DELETE FROM `quest_objective` WHERE `questId` = 8150 AND `id` = 284686;
@@ -35,7 +35,7 @@ DELETE FROM `creature_questender` WHERE `quest` = 10794;
 -- Remove quest that is supposed to be in Legion
 -- The Frozen Flame (Alliance)
 DELETE FROM `quest_template` WHERE `id` = 11997;
-DELETE FROM `quest_objectives` WHERE `questId` = 11997;
+DELETE FROM `quest_objective` WHERE `questId` = 11997;
 
 -- Beta quest that did not make it to the live servers
 -- Raising Spirits
@@ -282,4 +282,3 @@ WHERE `id` IN (869,13564,14066,25621,26512,26930,27007,27152,27610,29392,29415,2
 UPDATE `creature_template`
 SET `unit_class` = 1
 WHERE `entry` = 57284;
-
