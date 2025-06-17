@@ -261,3 +261,10 @@ WHERE `entry` IN (
     70217,
     72588
 );
+
+-- Vehicle Template Accessories
+-- Nasty Little Helper spell: Throw Strange Snowman
+INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54509, 101910, 1, 0);
+
+-- Wicked Little Helper spell: Throw Winter Veil Tree
+INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54524, 101938, 1, 0);
