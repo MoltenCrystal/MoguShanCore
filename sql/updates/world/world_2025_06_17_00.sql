@@ -268,3 +268,8 @@ INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `use
 
 -- Wicked Little Helper spell: Throw Winter Veil Tree
 INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54524, 101938, 1, 0);
+
+-- Quest Area Triggers
+UPDATE `quest_template`;
+SET `SpecialFlags` = 2;
+WHERE `id` IN (869,13564,14066,25621,26512,26930,27007,27152,27610,29392,29415,29536,29539);
