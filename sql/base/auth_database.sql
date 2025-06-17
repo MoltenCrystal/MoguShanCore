@@ -698,8 +698,6 @@ CREATE TABLE `battlenet_accounts` (
   `online` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `last_ip` varchar(15) NOT NULL DEFAULT '127.0.0.1',
   `failed_logins` int(10) unsigned NOT NULL DEFAULT '0',
-  `project_member_id` int(10) unsigned DEFAULT NULL,
-  `project_is_temp` tinyint(1) DEFAULT '0' COMMENT 'nighthold',
   `trinity_member_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Account System';

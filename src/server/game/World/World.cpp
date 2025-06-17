@@ -2339,9 +2339,6 @@ void World::SetInitialWorldSettings()
     TC_LOG_INFO("server.loading", "Loading creature scalling data...");
     sObjectMgr->LoadCreatureScaling();
 
-    TC_LOG_INFO("server.loading", "Loading promotion auras data...");
-    sObjectMgr->LoadPromotionAuras();
-
     sObjectMgr->LoadGuildChallengeRewardInfo();
 
     sServiceMgr->LoadFromDB();
@@ -4087,7 +4084,7 @@ void World::LoadAccountCacheData()
 {
     TC_LOG_INFO("server.loading", "Loading account cache");
 
-    QueryResult result = LoginDatabase.Query("SELECT id, project_member_id FROM account");
+    QueryResult result = LoginDatabase.Query("SELECT id, trinity_member_id FROM account");
     if (!result)
     {
         TC_LOG_INFO("server.loading", "No account cache data loaded, empty query.");

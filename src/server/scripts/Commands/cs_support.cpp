@@ -2484,7 +2484,7 @@ public:
         else
         {
             if (QueryResult charResult = CharacterDatabase.PQuery("SELECT account FROM characters WHERE guid = %u", GUID_LOPART(guid)))
-                if (QueryResult accountResult = LoginDatabase.PQuery("SELECT project_member_id FROM account WHERE id = %u", (*charResult)[0].GetUInt32()))
+                if (QueryResult accountResult = LoginDatabase.PQuery("SELECT trinity_member_id FROM account WHERE id = %u", (*charResult)[0].GetUInt32()))
                     if (uint32 memberId = (*accountResult)[0].GetUInt32())
                         handler->PSendSysMessage("Player %s (guid: %u, memberId: %u) is verified.", name.c_str(), GUID_LOPART(guid), memberId);
         }

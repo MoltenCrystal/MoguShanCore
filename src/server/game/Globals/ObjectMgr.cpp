@@ -10793,40 +10793,6 @@ void ObjectMgr::LoadCreatureScaling()
     TC_LOG_INFO("server.loading", ">> Loaded %u creature scaling data in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
 }
 
-void ObjectMgr::LoadPromotionAuras()
-{
-    _promotionAuras.clear();
-
-    uint32 oldMSTime = getMSTime();
-    uint32 count = 0;
-
-    if (QueryResult result = LoginDatabase.PQuery("SELECT entry, start_date, lenght, active FROM promotion_auras"))
-    {
-        _promotionAuras.reserve(result->GetRowCount());
-
-        do
-        {
-            Field* fields = result->Fetch();
-
-            PromotionAurasInfo info;
-            info.Entry = fields[0].GetUInt32();
-            info.StartDate = fields[1].GetUInt32();
-            info.Lenght = fields[2].GetUInt32() * MINUTE; // in minutes
-            info.Active = fields[3].GetBool();
-
-            // skip outdated promotions
-            if (time(nullptr) > (info.StartDate + info.Lenght))
-                info.Active = 0;
-
-            _promotionAuras.push_back(info);
-
-            ++count;
-        } while (result->NextRow());
-    }
-
-    TC_LOG_INFO("server.loading", ">> Loaded %u promotion auras in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
-}
-
 void ObjectMgr::LoadObjectVisibilityState()
 {
     uint32 oldMSTime = getMSTime();

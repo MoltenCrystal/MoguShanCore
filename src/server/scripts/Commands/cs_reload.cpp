@@ -128,7 +128,6 @@ public:
             { "page_text",                      SEC_ADMINISTRATOR,  true,   &HandleReloadPageTextsCommand,                  },
             { "pickpocketing_loot_template",    SEC_ADMINISTRATOR,  true,   &HandleReloadLootTemplatesPickpocketingCommand, },
             { "points_of_interest",             SEC_ADMINISTRATOR,  true,   &HandleReloadPointsOfInterestCommand,           },
-            { "promotion_auras",                SEC_ADMINISTRATOR,  true,   &HandleReloadPromotionAurasCommand,             },
             { "prospecting_loot_template",      SEC_ADMINISTRATOR,  true,   &HandleReloadLootTemplatesProspectingCommand,   },
             { "quest_poi",                      SEC_ADMINISTRATOR,  true,   &HandleReloadQuestPOICommand,                   },
             { "quest_template",                 SEC_ADMINISTRATOR,  true,   &HandleReloadQuestTemplateCommand,              },
@@ -786,14 +785,6 @@ public:
         TC_LOG_INFO("misc", "Re-Loading `points_of_interest` Table!");
         sObjectMgr->LoadPointsOfInterest();
         handler->SendGlobalGMSysMessage("DB table `points_of_interest` reloaded.");
-        return true;
-    }
-
-    static bool HandleReloadPromotionAurasCommand(ChatHandler* handler, const char* /*args*/)
-    {
-        TC_LOG_INFO("misc", "Re-Loading `promotion_auras` Table!");
-        sObjectMgr->LoadPromotionAuras();
-        handler->SendGlobalGMSysMessage("DB table `promotion_auras` reloaded.");
         return true;
     }
 
