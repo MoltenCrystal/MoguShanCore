@@ -12,14 +12,17 @@ WHERE `id` IN (30470,32640,32641);
 
 -- Remove unneeded credit
 -- Honoring a Hero (Alliance)
-UPDATE `quest_objective`
-SET `objectId` = 0
-WHERE `questId` = 8149 AND`id` = 284684;
+DELETE FROM `quest_objective`WHERE `questId` = 8149 AND`id` = 284684;
 
 -- Honoring a Hero (Horde)
-UPDATE `quest_objective`
-SET `objectId` = 0
-WHERE `questId` = 8150 AND `id` = 284686;
+DELETE FROM `quest_objective` WHERE `questId` = 8150 AND `id` = 284686;
+
+-- Remove object from quest, since this object does not exist and is supposedly only used in "Developer Land"
+-- Sotelo's Quest
+DELETE FROM `quest_objective` WHERE `questId` = 30759 AND `id` = 272423;
+
+-- Criteria Effects Test Quest
+DELETE FROM `quest_objective` WHERE `questId` = 30934 AND `id` = 267730;
 
 -- Remove obsolete quest
 -- Rogues of the Shattered Hand (Horde)
@@ -33,17 +36,6 @@ DELETE FROM `creature_questender` WHERE `quest` = 10794;
 -- The Frozen Flame (Alliance)
 DELETE FROM `quest_template` WHERE `id` = 11997;
 DELETE FROM `quest_objectives` WHERE `questId` = 11997;
-
--- Remove object from quest, since this object does not exist and is supposedly only used in "Developer Land"
--- Sotelo's Quest
-UPDATE `quest_objective`
-SET `objectId` = 0
-WHERE `questId` = 30759 AND `id` = 272423;
-
--- Criteria Effects Test Quest
-UPDATE `quest_objective`
-SET `objectId` = 0
-WHERE `questId` = 30934 AND `id` = 267730;
 
 -- Beta quest that did not make it to the live servers
 -- Raising Spirits
@@ -279,4 +271,3 @@ WHERE `id` IN (869,13564,14066,25621,26512,26930,27007,27152,27610,29392,29415,2
 UPDATE `creature_template`
 SET `unit_class` = 1
 WHERE `entry` = 57284;
-
