@@ -1,24 +1,24 @@
 -- Startup error fixes
 -- QUESTS
 -- Missing RequiredSkillId
-UPDATE `quest_template`;
-SET `RequiredSkillId` = 185;
+UPDATE `quest_template`
+SET `RequiredSkillId` = 185
 WHERE `id` IN (33026,33021,33020,33022,33024,33027,33107,33139) AND `ZoneOrSort` = -304 AND `RequiredSkillId` = 0;
 
 -- Missing SpecialFlag
-UPDATE `quest_template`;
-SET `SpecialFlags` = 2;
+UPDATE `quest_template`
+SET `SpecialFlags` = 2
 WHERE `id` IN (30470,32640,32641);
 
 -- Remove unneeded credit
 -- Honoring a Hero (Alliance)
-UPDATE `quest_objective`;
-SET `objectId` = 0;
+UPDATE `quest_objective`
+SET `objectId` = 0
 WHERE `questId` = 8149 AND`id` = 284684;
 
 -- Honoring a Hero (Horde)
-UPDATE `quest_objective`;
-SET `objectId` = 0;
+UPDATE `quest_objective`
+SET `objectId` = 0
 WHERE `questId` = 8150 AND `id` = 284686;
 
 -- Remove obsolete quest
@@ -27,21 +27,22 @@ DELETE FROM `quest_template` WHERE `id` = 10794;
 DELETE FROM `quest_objective` WHERE `questId` = 10794;
 DELETE FROM `quest_poi` WHERE `questId` = 10794;
 DELETE FROM `quest_poi_points` WHERE `questId` = 10794;
-DELETE FROM `creature_questender` WHERE `quest` = 10794
+DELETE FROM `creature_questender` WHERE `quest` = 10794;
 
 -- Remove quest that is supposed to be in Legion
 -- The Frozen Flame (Alliance)
 DELETE FROM `quest_template` WHERE `id` = 11997;
+DELETE FROM `quest_objectives` WHERE `questId` = 11997;
 
 -- Remove object from quest, since this object does not exist and is supposedly only used in "Developer Land"
 -- Sotelo's Quest
-UPDATE `quest_objective`;
-SET `objectId` = 0;
+UPDATE `quest_objective`
+SET `objectId` = 0
 WHERE `questId` = 30759 AND `id` = 272423;
 
 -- Criteria Effects Test Quest
-UPDATE `quest_objective`;
-SET `objectId` = 0;
+UPDATE `quest_objective`
+SET `objectId` = 0
 WHERE `questId` = 30934 AND `id` = 267730;
 
 -- Beta quest that did not make it to the live servers
@@ -61,23 +62,23 @@ DELETE FROM `creature_questender` WHERE `quest` = 31939;
 
 -- Update creature to be set as objectId for battle pet quest
 -- Defeat Kela Grimtotem
-UPDATE `quest_objective`;
-SET `objectId` = 66453;
+UPDATE `quest_objective`
+SET `objectId` = 66453
 WHERE `questId` = 31906 AND `id` = 269192;
 
 -- Defeat Zoltan
-UPDATE `quest_objective`;
-SET `objectId` = 66444;
+UPDATE `quest_objective`
+SET `objectId` = 66444
 WHERE `questId` = 31907 AND `id` = 269193;
 
 -- Defeat Elena Flutterfly
-UPDATE `quest_objective`;
-SET `objectId` = 66414;
+UPDATE `quest_objective`
+SET `objectId` = 66414
 WHERE `questId` = 31908 AND `id` = 269194;
 
 -- QUEST OBJECTIVE LOCALES
 -- Remove faulty/bad locales
-DELETE FROM `quest_objectives_locale`
+DELETE FROM `locales_quest_objective`
 WHERE (id, locale) IN (
     (267730, 2),
     (267730, 3),
@@ -214,9 +215,9 @@ WHERE (id, locale) IN (
 -- QUEST RELATIONS
 -- Missing quest flag UNIT_NPC_FLAG_QUESTGIVER
 -- Inkmaster Wei <Inscription Trainer>
-UPDATE `creature_template`;
-SET `objectId` = 82;
-WHERE `questId` = 56065;
+UPDATE `creature_template`
+SET `npcflag` = 82
+WHERE `entry` = 56065;
 
 -- Remove custom NPC
 -- Isengard Menu
@@ -240,8 +241,8 @@ DELETE FROM `creature_template` WHERE `entry` = 190000;
 -- 69779: Faded Image of Yu'lon
 -- 70217: Sunreaver Captive
 -- 72588: Sha Cloud
-UPDATE `creature_template`;
-SET `npcflag` = 0;
+UPDATE `creature_template`
+SET `npcflag` = 0
 WHERE `entry` IN (
     39140,
     45005,
@@ -270,6 +271,12 @@ INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `use
 INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54524, 101938, 1, 0);
 
 -- Quest Area Triggers
-UPDATE `quest_template`;
-SET `SpecialFlags` = 2;
+UPDATE `quest_template`
+SET `SpecialFlags` = 2
 WHERE `id` IN (869,13564,14066,25621,26512,26930,27007,27152,27610,29392,29415,29536,29539);
+
+-- Creature templates
+UPDATE `creature_template`
+SET `unit_class` = 1
+WHERE `entry` = 57284;
+
