@@ -258,6 +258,14 @@ WHERE `entry` IN (
 );
 
 -- Vehicle Template Accessories
+-- The Abominable Greench
+-- Abominale Crush (101885)
+-- Cleave (40504)
+-- Shrink Heart (101873)
+INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54499, 101885, 1, 0);
+INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54499, 40504, 1, 0);
+INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54499, 101873, 1, 0);
+
 -- Nasty Little Helper spell: Throw Strange Snowman
 INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54509, 101910, 1, 0);
 
