@@ -221,3 +221,43 @@ WHERE `questId` = 56065;
 -- Remove custom NPC
 -- Isengard Menu
 DELETE FROM `creature_template` WHERE `entry` = 190000;
+
+-- UNIT_NPC_FLAG_SPELLCLICK data
+-- 39140: Aronus
+-- 45005: Wyvern
+-- 56682: Rolling Barrel
+-- 59163: Reinforced Archery Target
+-- 62682: Burgled Barrel
+-- 69087: Soul Jar
+-- 69327: Lightning Rod
+-- 69655: Activated Forge
+-- 69660: Activated Forge
+-- 69661: Activated Forge
+-- 69662: Activated Forge
+-- 69771: Faded Image of Xuen
+-- 69774: Faded Image of Chi-Ji
+-- 69777: Faded Image of Niuzao
+-- 69779: Faded Image of Yu'lon
+-- 70217: Sunreaver Captive
+-- 72588: Sha Cloud
+UPDATE `creature_template`;
+SET `npcflag` = 0;
+WHERE `entry` IN (
+    39140,
+    45005,
+    56682,
+    59163,
+    62682,
+    69087,
+    69327,
+    69655,
+    69660,
+    69661,
+    69662,
+    69771,
+    69774,
+    69777,
+    69779,
+    70217,
+    72588
+);
