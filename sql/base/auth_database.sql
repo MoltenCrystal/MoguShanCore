@@ -56,17 +56,6 @@ CREATE TABLE `account` (
   `active_mute_id` int(11) DEFAULT NULL,
   `trinity_verified` tinyint(1) DEFAULT NULL,
   `cash` int(10) DEFAULT NULL,
-  `project_is_free` tinyint(1) DEFAULT NULL,
-  `project_is_temp` tinyint(1) DEFAULT NULL,
-  `project_unban_count` tinyint(4) DEFAULT NULL,
-  `project_antierror` int(10) DEFAULT NULL,
-  `project_attached` int(10) DEFAULT NULL,
-  `project_passchange` int(10) DEFAULT NULL,
-  `project_vote_time` bigint(20) DEFAULT NULL,
-  `project_hwid` varchar(120) DEFAULT NULL,
-  `project_member_id` int(30) DEFAULT NULL,
-  `project_shortname` varchar(96) DEFAULT NULL,
-  `project_verified` tinyint(1) DEFAULT NULL,
   `trinity_hwid` varchar(120) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
@@ -167,18 +156,6 @@ CREATE TABLE `account_battle_pet_slots` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `account_battle_pet_slots` */
-
-/*Table structure for table `account_boost` */
-
-DROP TABLE IF EXISTS `account_boost`;
-
-CREATE TABLE `account_boost` (
-  `id` int(11) NOT NULL DEFAULT '0',
-  `realmid` int(11) unsigned NOT NULL DEFAULT '1',
-  `counter` int(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `account_boost` */
 
 /*Table structure for table `account_data` */
 

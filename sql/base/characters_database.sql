@@ -2253,22 +2253,6 @@ CREATE TABLE `daily_players_reports` (
 
 /*Data for the table `daily_players_reports` */
 
-/*Table structure for table `executed_services` */
-
-DROP TABLE IF EXISTS `executed_services`;
-
-CREATE TABLE `executed_services` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `type` enum('rename','change_acc','customize','change_race','change_class','change_prof','char_restore','guild_rename','unban','level_down','marketplace','transfer','boost','item_restore','boost_profession','boost_profession_small') NOT NULL,
-  `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '(player or guild)',
-  `old_data` text NOT NULL,
-  `new_data` text NOT NULL,
-  `execute_date` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `executed_services` */
-
 /*Table structure for table `game_event_condition_save` */
 
 DROP TABLE IF EXISTS `game_event_condition_save`;
