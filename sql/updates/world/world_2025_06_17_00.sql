@@ -214,6 +214,8 @@ WHERE `entry` = 56065;
 -- Remove custom NPC
 -- Isengard Menu
 DELETE FROM `creature_template` WHERE `entry` = 190000;
+DELETE FROM `creature_queststarter` WHERE `id` = 190000;
+DELETE FROM `creature_questender` WHERE `id` = 190000; 
 
 -- UNIT_NPC_FLAG_SPELLCLICK data
 -- 39140: Aronus
@@ -268,6 +270,8 @@ SET `SpecialFlags` = 2
 WHERE `id` IN (869,13564,14066,25621,26512,26930,27007,27152,27610,29392,29415,29536,29539);
 
 -- Creature templates
+-- Watering Can Credit
 UPDATE `creature_template`
 SET `unit_class` = 1
 WHERE `entry` = 57284;
+
