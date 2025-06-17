@@ -123,24 +123,7 @@ void LoginDatabaseConnection::DoPrepareStatements()
     //PrepareStatement(LOGIN_SEL_BNET_ACCOUNT_ID_BY_GAME_ACCOUNT, "SELECT battlenet_account FROM account WHERE id = ?", CONNECTION_SYNCH);
     //PrepareStatement(LOGIN_UPD_BNET_GAME_ACCOUNT_LINK, "UPDATE account SET battlenet_account = ?, battlenet_index = ? WHERE id = ?", CONNECTION_ASYNC);
     //PrepareStatement(LOGIN_SEL_BNET_MAX_ACCOUNT_INDEX, "SELECT MAX(battlenet_index) FROM account WHERE battlenet_account = ?", CONNECTION_SYNCH);
-
-    // boost
-    PrepareStatement(LOGIN_SEL_ACCOUNT_BOOST, "SELECT counter FROM account_boost WHERE id = ? AND realmid = ?", CONNECTION_SYNCH);
-    PrepareStatement(LOGIN_INS_ACCOUNT_BOOST, "REPLACE INTO account_boost (id, realmid, counter) VALUES (?, ?, ?)", CONNECTION_ASYNC);
-    PrepareStatement(LOGIN_DEL_ACCOUNT_BOOST, "DELETE FROM account_boost WHERE id = ? AND realmid = ?", CONNECTION_ASYNC);
-
-    // WoW-Token
-    PrepareStatement(LOGIN_INS_WOW_TOKEN, "INSERT INTO wow_token (accountId, characterGuid, realm, coins) VALUES (?, ?, ?, ?)", CONNECTION_SYNCH);
-
-    // project
-    PrepareStatement(LOGIN_SEL_project_MEMBER_PREMIUM, "SELECT unsetdate FROM project_member_premiums WHERE (member_id = ? OR member_id = 0) AND active = 1 ORDER BY unsetdate DESC", CONNECTION_SYNCH);
-    PrepareStatement(LOGIN_SEL_ACCOUNT_VERIFIED, "SELECT 1 FROM account WHERE project_member_id = ? AND project_verified LIMIT 1", CONNECTION_SYNCH);
-    PrepareStatement(LOGIN_SEL_project_MEMBER_SETTINGS, "SELECT setting, value FROM project_member_settings WHERE member_id = ?", CONNECTION_SYNCH);
-    PrepareStatement(LOGIN_REP_project_MEMBER_SETTING, "REPLACE INTO project_member_settings (member_id, setting, value) VALUES (?, ?, ?)", CONNECTION_ASYNC);
-    PrepareStatement(LOGIN_DEL_project_MEMBER_SETTING, "DELETE FROM project_member_settings WHERE member_id = ? AND setting = ?", CONNECTION_ASYNC);
-    PrepareStatement(LOGIN_SEL_project_MEMBER_TODAYS_DAILY_REWARDS, "SELECT source_id FROM project_member_rewards WHERE member_id = ? AND source_type = ? AND reward_day = ? AND realmid = ?", CONNECTION_SYNCH);
-    PrepareStatement(LOGIN_INS_project_MEMBER_REWARD, "INSERT INTO project_member_rewards (member_id, character_guid, account_id, realmid, source_type, source_id, reward_amount, reward_date, reward_day) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", CONNECTION_ASYNC);
-
+    // Arena Games
     PrepareStatement(LOGIN_INS_ARENA_GAMES, "INSERT INTO arena_games (`gameid`, `teamid`, `guid`, `changeType`, `ratingChange`, `teamRating`, `damageDone`, `deaths`, `healingDone`, `damageTaken`, `healingTaken`, `killingBlows`, `damageAbsorbed`, `timeControlled`, `aurasDispelled`, `aurasStolen`, `highLatencyTimes`, `spellsPrecast`, `mapId`, `start`, `end`, `class`, `season`, `type`, `realmid`, `matchMakerRating`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", CONNECTION_ASYNC);
 	
 	// BattlePay
@@ -148,8 +131,4 @@ void LoginDatabaseConnection::DoPrepareStatements()
 	PrepareStatement(LOGIN_UPD_BATTLEPAY_INCREMENT_COINS, "UPDATE account_data SET dp = dp + ? WHERE id = ?", CONNECTION_SYNCH);
 	PrepareStatement(LOGIN_UPD_BATTLEPAY_DECREMENT_COINS, "UPDATE account_data SET dp = dp - ? WHERE id = ?;", CONNECTION_SYNCH);
 
-    // Custom Reward
-    PrepareStatement(LOGIN_UPD_BATTLEPAY_VP_COINS, "UPDATE account_data SET vp = vp + ? WHERE id = ?;", CONNECTION_SYNCH);
-	
-    PrepareStatement(LOGIN_INS_CURRENCY_TRANSACTIONS, "INSERT INTO `currency_transactions` (`guid`, `unix_time`, `operation`, `param`, `attachments`, `amount_before`, `amount_after`, `realmid`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", CONNECTION_ASYNC);
 }

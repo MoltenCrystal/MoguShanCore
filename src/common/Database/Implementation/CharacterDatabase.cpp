@@ -682,7 +682,7 @@ void CharacterDatabaseConnection::DoPrepareStatements()
     PrepareStatement(CHAR_INS_CHAR_RESEARCH_PROJECT, "INSERT INTO character_research_projects (guid, projectId) VALUES (?, ?)", CONNECTION_ASYNC);
     PrepareStatement(CHAR_DEL_CHAR_RESEARCH_PROJECTS, "DELETE FROM character_research_projects WHERE guid = ?", CONNECTION_ASYNC);
 
-    // battle Pet
+    // Battle Pet
     PrepareStatement(CHAR_SEL_ACCOUNT_BATTLE_PETS, "SELECT id, species, nickname, timestamp, level, xp, health, maxHealth, power, speed, quality, breed, flags FROM account_battle_pet WHERE accountId = ?", CONNECTION_ASYNC);
     PrepareStatement(CHAR_DEL_ACCOUNT_BATTLE_PET, "DELETE FROM account_battle_pet WHERE id = ?", CONNECTION_ASYNC);
     PrepareStatement(CHAR_INS_ACCOUNT_BATTLE_PET, "INSERT INTO account_battle_pet (id, accountId, species, nickname, timestamp, level, xp, health, maxHealth, power, speed, quality, breed, flags) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", CONNECTION_ASYNC);
@@ -690,25 +690,11 @@ void CharacterDatabaseConnection::DoPrepareStatements()
     PrepareStatement(CHAR_DEL_ACCOUNT_BATTLE_PET_SLOTS, "DELETE FROM account_battle_pet_slots WHERE accountId = ?", CONNECTION_ASYNC);
     PrepareStatement(CHAR_INS_ACCOUNT_BATTLE_PET_SLOTS, "INSERT INTO account_battle_pet_slots (accountId, slot1, slot2, slot3, flags) VALUES (?, ?, ?, ?, ?)", CONNECTION_ASYNC);
 
-    // blackmarket
+    // Blackmarket
     PrepareStatement(CHAR_SEL_BLACKMARKET_AUCTIONS, "SELECT auctionId, templateId, startTime, endTime, currentBidder, currentBid, minIncrement, numBids FROM blackmarket_auctions", CONNECTION_SYNCH);
     PrepareStatement(CHAR_DEL_BLACKMARKET_AUCTION, "DELETE FROM blackmarket_auctions WHERE auctionId = ?", CONNECTION_ASYNC);
     PrepareStatement(CHAR_INS_BLACKMARKET_AUCTION, "INSERT INTO blackmarket_auctions (auctionId, templateId, startTime, endTime, currentBidder, currentBid, minIncrement, numBids) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", CONNECTION_ASYNC);
     PrepareStatement(CHAR_UPD_BLACKMARKET_AUCTION, "UPDATE blackmarket_auctions SET currentBidder = ?, currentBid = ?, minIncrement = ?, numBids = ? WHERE auctionId = ?", CONNECTION_ASYNC);
-
-    // Boost
-    PrepareStatement(CHAR_SEL_CHAR_INVENTORY_BOOST, "SELECT inv1.item FROM character_inventory AS inv1 LEFT JOIN character_inventory AS inv2 ON inv1.bag = inv2.item LEFT JOIN item_instance ON inv1.item = item_instance.guid WHERE inv1.slot < 39 AND inv1.guid = ? AND (inv2.slot < 39 OR inv1.bag = 0) AND item_instance.itemEntry != 6948", CONNECTION_SYNCH);
-    PrepareStatement(CHAR_DEL_CHAR_INVENTORY_BOOST, "DELETE inv1.* FROM character_inventory AS inv1 LEFT JOIN character_inventory AS inv2 ON inv1.bag = inv2.item LEFT JOIN item_instance ON inv1.item = item_instance.guid WHERE inv1.slot < 39 AND inv1.guid = ? AND (inv2.slot < 39 OR inv1.bag = 0) AND item_instance.itemEntry != 6948", CONNECTION_ASYNC);
-    PrepareStatement(CHAR_SEL_CHAR_HEARTHSTONE_BOOST, "SELECT itemEntry FROM item_instance WHERE owner_guid = ? AND itemEntry = 6948", CONNECTION_SYNCH);
-    PrepareStatement(CHAR_UPD_CHAR_HEARTHSTONE_BOOST, "UPDATE character_inventory JOIN item_instance ON character_inventory.item = item_instance.guid SET bag = 0, slot = 23 WHERE character_inventory.guid = ? AND item_instance.itemEntry = 6948", CONNECTION_ASYNC);
-    PrepareStatement(CHAR_SEL_CHAR_TALENT, "SELECT spell FROM character_talent WHERE guid = ?", CONNECTION_SYNCH);
-    PrepareStatement(CHAR_SEL_CHAR_SPELL, "SELECT spell FROM character_spell WHERE guid = ? AND spell = ?", CONNECTION_SYNCH);
-    PrepareStatement(CHAR_SEL_CHARACTER_SKILL_BOOST, "SELECT skill, value, max FROM character_skills WHERE guid = ? AND skill = ?", CONNECTION_SYNCH);
-    PrepareStatement(CHAR_SEL_CHARACTER_SKILLS_BOOST, "SELECT skill FROM character_skills WHERE guid = ?", CONNECTION_SYNCH);
-    PrepareStatement(CHAR_INS_CHAR_INVENTORY, "INSERT INTO character_inventory (guid, bag, slot, item) VALUES (?, ?, ?, ?)"
-                     "ON DUPLICATE KEY UPDATE item = VALUES(item)", CONNECTION_ASYNC);
-    PrepareStatement(CHAR_UPD_CHARACTER_FOR_BOOST, "UPDATE characters SET race = ?, money = money + 10000000, level = 90, position_x = ?, position_y = ?, position_z = ?, orientation = ?, map = ?, talenttree = ?,"
-                     "trans_x = 0, trans_y = 0, trans_z = 0, trans_o = 0, transguid = 0, at_login = at_login & ~ ?, activespec = 0, equipmentCache = ?, cinematic = 1 WHERE guid = ?", CONNECTION_ASYNC);
 
     // Challenge mode
     PrepareStatement(CHAR_INS_GROUP_CHALLENGE, "INSERT INTO group_completed_challenges VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", CONNECTION_ASYNC);
