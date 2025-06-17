@@ -2269,18 +2269,6 @@ CREATE TABLE `executed_services` (
 
 /*Data for the table `executed_services` */
 
-/*Table structure for table `fake_items` */
-
-DROP TABLE IF EXISTS `fake_items`;
-
-CREATE TABLE `fake_items` (
-  `guid` int(11) NOT NULL,
-  `fakeEntry` int(11) NOT NULL,
-  PRIMARY KEY (`guid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `fake_items` */
-
 /*Table structure for table `game_event_condition_save` */
 
 DROP TABLE IF EXISTS `game_event_condition_save`;

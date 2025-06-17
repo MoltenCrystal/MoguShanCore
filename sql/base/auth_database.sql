@@ -953,53 +953,6 @@ CREATE TABLE `creature_respawn` (
   KEY `idx_instance` (`instanceId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Grid Loading System';
 
-/*Table structure for table `currency_transactions`*/
-DROP TABLE IF EXISTS `currency_transactions`;
-CREATE TABLE `currency_transactions` (
-  `realmid` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1',
-  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `guid` INT(10) UNSIGNED NOT NULL,
-  `unix_time` INT(10) UNSIGNED NOT NULL,
-  `operation` ENUM('LOOT_MOB','LOOT_ITEM','MAIL','QUEST_REWARD','TRADE','SELL_ITEM','GUILD_BANK','AUCTION','TRANSMOGRIFICATION') NOT NULL,
-  `param` INT(10) UNSIGNED DEFAULT NULL,
-  `attachments` TEXT NOT NULL,
-  `amount_before` INT(10) UNSIGNED DEFAULT NULL,
-  `amount_after` INT(10) UNSIGNED DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idx_guid` (`guid`),
-  KEY `idx_operation` (`operation`),
-  KEY `idx_unix_time` (`unix_time`),
-  KEY `idx_param` (`param`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-/*Table structure for table `custom_transmogrification` */
-
-DROP TABLE IF EXISTS `custom_transmogrification`;
-
-CREATE TABLE `custom_transmogrification` (
-  `GUID` int(10) unsigned NOT NULL COMMENT 'Item guidLow',
-  `FakeEntry` int(10) unsigned NOT NULL COMMENT 'Item entry',
-  `Owner` int(10) unsigned NOT NULL COMMENT 'Player guidLow',
-  PRIMARY KEY (`GUID`),
-  KEY `Owner` (`Owner`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='6_2';
-
-/*Data for the table `custom_transmogrification` */
-
-/*Table structure for table `custom_transmogrification_sets` */
-
-DROP TABLE IF EXISTS `custom_transmogrification_sets`;
-
-CREATE TABLE `custom_transmogrification_sets` (
-  `Owner` int(10) unsigned NOT NULL COMMENT 'Player guidlow',
-  `PresetID` tinyint(3) unsigned NOT NULL COMMENT 'Preset identifier',
-  `SetName` text COMMENT 'SetName',
-  `SetData` text COMMENT 'Slot1 Entry1 Slot2 Entry2',
-  PRIMARY KEY (`Owner`,`PresetID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='6_1';
-
-/*Data for the table `custom_transmogrification_sets` */
-
 /*Table structure for table `daily_players_reports` */
 
 DROP TABLE IF EXISTS `daily_players_reports`;
@@ -1060,18 +1013,6 @@ insert  into `executed_services`(`id`,`type`,`guid`,`old_data`,`new_data`,`execu
 (21,'change_race',430,'Old Race: 7 Old Name: Malefikita','New Race: 1 New Name: Malefikita','2021-10-31_15-16-15'),
 (22,'change_race',447,'Old Race: 1 Old Name: Perrusai','New Race: 1 New Name: Mariacheche','2021-10-31_21-57-11'),
 (23,'change_race',75,'Old Race: 2 Old Name: Monchu','New Race: 26 New Name: Monchu','2021-11-03_12-53-10');
-
-/*Table structure for table `fake_items` */
-
-DROP TABLE IF EXISTS `fake_items`;
-
-CREATE TABLE `fake_items` (
-  `guid` int(11) NOT NULL,
-  `fakeEntry` int(11) NOT NULL,
-  PRIMARY KEY (`guid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `fake_items` */
 
 /*Table structure for table `game_event_condition_save` */
 
@@ -1565,19 +1506,6 @@ CREATE TABLE `guild_reputation` (
 
 /*Data for the table `guild_reputation` */
 
-/*Table structure for table `icore_stat` */
-
-DROP TABLE IF EXISTS `icore_stat`;
-
-CREATE TABLE `icore_stat` (
-  `online` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `diff` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `uptime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `revision` varchar(255) NOT NULL DEFAULT 'I-Core',
-  PRIMARY KEY (`online`,`diff`,`uptime`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `icore_stat` */
 
 /*Table structure for table `instance` */
 
@@ -1954,10 +1882,6 @@ CREATE TABLE `petition` (
 
 /*Data for the table `petition` */
 
-insert  into `petition`(`ownerguid`,`petitionguid`,`name`,`type`) values 
-(255,278964,'Fairy tail',4),
-(361,353610,'Legado De Azeroth',4);
-
 /*Table structure for table `petition_sign` */
 
 DROP TABLE IF EXISTS `petition_sign`;
@@ -2119,119 +2043,6 @@ insert  into `pool_quest_save`(`pool_id`,`quest_id`) values
 (30155,32677),
 (30156,32608),
 (30184,40313);
-
-/*Table structure for table `project_betatesters` */
-
-DROP TABLE IF EXISTS `project_betatesters`;
-
-CREATE TABLE `project_betatesters` (
-  `id` int(11) NOT NULL,
-  `betatest_id` int(11) NOT NULL,
-  `member_id` mediumint(8) NOT NULL,
-  `account_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk__project_betatesters__members1_idx` (`member_id`) USING BTREE,
-  KEY `fk__project_betatesters__account1_idx` (`account_id`) USING BTREE,
-  KEY `fk__project_betatesters__project_betatests1_idx` (`betatest_id`) USING BTREE,
-  KEY `fk__project_betatesters__project_betatest_accounts1_idx` (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
-/*Data for the table `project_betatesters` */
-
-/*Table structure for table `project_member_premiums` */
-
-DROP TABLE IF EXISTS `project_member_premiums`;
-
-CREATE TABLE `project_member_premiums` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `member_id` mediumint(8) NOT NULL,
-  `setdate` bigint(40) NOT NULL,
-  `unsetdate` bigint(40) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `card_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk__nighthold_member_premium__members1_idx` (`member_id`),
-  KEY `fk__nighthold_member_premiums__nighthold_member_items1_idx` (`card_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='nighthold Premium Members';
-
-/*Data for the table `project_member_premiums` */
-
-/*Table structure for table `project_member_rewards` */
-
-DROP TABLE IF EXISTS `project_member_rewards`;
-
-CREATE TABLE `project_member_rewards` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `member_id` int(10) unsigned NOT NULL,
-  `character_guid` int(10) unsigned NOT NULL,
-  `account_id` int(10) unsigned NOT NULL,
-  `realmid` int(10) unsigned NOT NULL,
-  `source_type` tinyint(3) unsigned NOT NULL,
-  `source_id` int(10) unsigned NOT NULL,
-  `reward_amount` int(10) unsigned NOT NULL,
-  `reward_date` int(10) unsigned NOT NULL,
-  `reward_day` int(10) unsigned NOT NULL COMMENT 'Used only for indexing purposes',
-  `processed` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `process_date` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `member_id_reward_day_source_type` (`member_id`,`reward_day`,`source_type`),
-  KEY `idx__member_id` (`member_id`),
-  KEY `idx__processed` (`processed`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='nighthold Member Rewards';
-
-/*Data for the table `project_member_rewards` */
-
-/*Table structure for table `project_member_settings` */
-
-DROP TABLE IF EXISTS `project_member_settings`;
-
-CREATE TABLE `project_member_settings` (
-  `member_id` int(10) unsigned NOT NULL,
-  `setting` int(10) unsigned NOT NULL COMMENT 'nightholdMemberInfo::Setting in core',
-  `value` varchar(255) NOT NULL,
-  PRIMARY KEY (`member_id`,`setting`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='nighthold Member Settings';
-
-/*Data for the table `project_member_settings` */
-
-/*Table structure for table `promocodes` */
-
-DROP TABLE IF EXISTS `promocodes`;
-
-CREATE TABLE `promocodes` (
-  `code` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL COMMENT 'Latin letters, digits and dash symbol are allowed, case insensitive',
-  `realmid` int(11) NOT NULL DEFAULT '-1' COMMENT 'Realm the code can be redeemed on or -1 for any realm',
-  `start_time` int(10) unsigned NOT NULL COMMENT 'Activation UNIX timestamp, 0 if always active',
-  `end_time` int(10) unsigned NOT NULL COMMENT 'Expiration UNIX timestamp, 0 if never expires',
-  `money` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Copper',
-  `items` tinytext NOT NULL COMMENT 'Format: itemid:count itemid:count ...',
-  `premium` tinytext NOT NULL COMMENT 'Duration in timestring format (e.g. "30d5h42m10s")',
-  `redeemed` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '1 if the code was redeemed, 0 otherwise',
-  `redeemer_guid` int(10) unsigned NOT NULL COMMENT 'Character GUID that redeemed the code',
-  `redeemer_realmid` int(10) unsigned NOT NULL COMMENT 'Character''s realm',
-  `redeemer_account` int(10) unsigned NOT NULL COMMENT 'Character''s account',
-  `redeemer_member` int(10) unsigned NOT NULL COMMENT 'Character''s nighthold member',
-  PRIMARY KEY (`code`),
-  KEY `realmid` (`realmid`),
-  KEY `redeemed` (`redeemed`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `promocodes` */
-
-/*Table structure for table `promotion_auras` */
-
-DROP TABLE IF EXISTS `promotion_auras`;
-
-CREATE TABLE `promotion_auras` (
-  `entry` int(11) unsigned NOT NULL,
-  `start_date` int(11) unsigned NOT NULL,
-  `lenght` int(11) unsigned NOT NULL COMMENT 'Lenght in minutes',
-  `active` tinyint(1) unsigned NOT NULL,
-  `comment` text NOT NULL,
-  PRIMARY KEY (`entry`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `promotion_auras` */
 
 /*Table structure for table `rated_pvp_info` */
 
@@ -2486,22 +2297,6 @@ CREATE TABLE `worldstates` (
   `comment` tinytext,
   PRIMARY KEY (`entry`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Variable Saves';
-
-/*Table structure for table `wow_token` */
-
-DROP TABLE IF EXISTS `wow_token`;
-
-CREATE TABLE `wow_token` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `accountId` int(11) unsigned NOT NULL,
-  `characterGuid` int(10) NOT NULL DEFAULT '0',
-  `realm` int(5) unsigned NOT NULL,
-  `coins` int(5) unsigned NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `wow_token` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
