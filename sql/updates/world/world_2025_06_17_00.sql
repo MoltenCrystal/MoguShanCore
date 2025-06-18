@@ -7,7 +7,7 @@ WHERE `id` IN (33026,33021,33020,33022,33024,33027,33107,33139) AND `ZoneOrSort`
 
 -- Missing SpecialFlag
 UPDATE `quest_template`
-SET `SpecialFlags` = 2
+SET `SpecialFlags` = 3
 WHERE `id` IN (30470,32640,32641);
 
 -- Remove unneeded credit
@@ -265,12 +265,6 @@ WHERE `entry` IN (
 INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54499, 101885, 1, 0);
 INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54499, 40504, 1, 0);
 INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54499, 101873, 1, 0);
-
--- Nasty Little Helper spell: Throw Strange Snowman
-INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54509, 101910, 1, 0);
-
--- Wicked Little Helper spell: Throw Winter Veil Tree
-INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES (54524, 101938, 1, 0);
 
 -- Quest Area Triggers
 UPDATE `quest_template`
